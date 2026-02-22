@@ -2,12 +2,10 @@ services:
   - type: worker
     name: discord-music-bot
     runtime: python
-    buildCommand: pip install -r requirements.txt
+    buildCommand: apt-get update; apt-get install -y ffmpeg; pip install -r requirements.txt
     startCommand: python bot.py
     envVars:
       - key: DISCORD_TOKEN
         sync: false
-      - key: SPOTIFY_CLIENT_ID
-        sync: false
-      - key: SPOTIFY_CLIENT_SECRET
-        sync: false
+      - key: PYTHON_VERSION
+        value: 3.11.0
